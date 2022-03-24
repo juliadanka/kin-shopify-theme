@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "main-default": {
+      "type": "main-default"
+    }
+  },
+  "order": [
+    "main-default"
+  ]
+}

@@ -1,0 +1,34 @@
+<cart-notification>
+    <div id="cart-notification" class="cart-notification focus-inset" aria-modal="true"
+         aria-label="{{ 'general.cart.item_added' | t }}" role="dialog" tabindex="-1">
+        <div class="cart-notification__header">
+            {%- if settings.cart_logo != blank -%}
+                <div class="cart-notification__logo-holder">
+                    <div style="width: {{ settings.cart_logo_width }}px">
+                    {%- assign image_size_2x = settings.cart_logo_width | times: 2 | at_most: 5760 -%}
+                    <img srcset="{{ settings.cart_logo | image_url: width: settings.cart_logo_width }} 1x, {{ settings.cart_logo | image_url: width: image_size_2x }} 2x"
+                         src="{{ settings.cart_logo | image_url: width: settings.cart_logo_width }}"
+                         loading="lazy"
+                         class="cart-notification__logo"
+                         width="{{ settings.cart_logo.width }}"
+                         height="{{ settings.cart_logo.height }}"
+                         alt="{{ settings.cart_logo.alt  }}"
+                    >
+                    </div>
+                </div>
+            {%- endif -%}
+            <button type="button" class="cart-notification__close focus-inset js-close"
+                    aria-label="{{ 'accessibility.close' | t }}">
+                {% render "icon-back" %}
+            </button>
+        </div>
+        <div id="cart-notification-product" class="cart-notification-product">
+            {% render "cart-notification-content" %}
+        </div>
+    </div>
+</cart-notification>
+{% style %}
+    .cart-notification {
+    display: none;
+    }
+{% endstyle %}

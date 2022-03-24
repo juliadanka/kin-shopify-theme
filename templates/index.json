@@ -1,0 +1,57 @@
+{
+  "sections": {
+    "1647813626158cdf01": {
+      "type": "homepage-hero",
+      "blocks": {
+        "16478136252835c878-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Bliss up for <em>Bliss<\/em>tober<\/p>"
+          }
+        },
+        "16478136252835c878-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>For a limited time, bundle <br\/>your bliss and save.<\/p>"
+          }
+        },
+        "16478136252835c878-2": {
+          "type": "bottom_text",
+          "settings": {
+            "bottom_text": "<p>(1x High Rhode, 1x Dream Light, and a 20-Pack of Kin Spritz.<\/p>"
+          }
+        },
+        "16478136252835c878-3": {
+          "type": "buttons",
+          "settings": {
+            "button_label": "$149 (5% off)",
+            "button_label_mob": "Shop Dream Light",
+            "button_link": "shopify:\/\/collections\/all"
+          }
+        }
+      },
+      "block_order": [
+        "16478136252835c878-0",
+        "16478136252835c878-1",
+        "16478136252835c878-2",
+        "16478136252835c878-3"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/bkgd.jpg",
+        "image_mob": "shopify:\/\/shop_images\/hero_img.jpg",
+        "color": "#ffffff",
+        "color_text": "#f9f8f5"
+      }
+    },
+    "1647840217b27bef96": {
+      "type": "product",
+      "settings": {
+        "product": "high-rhode"
+      }
+    }
+  },
+  "order": [
+    "1647813626158cdf01",
+    "1647840217b27bef96"
+  ]
+}

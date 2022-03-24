@@ -1,0 +1,213 @@
+{{ 'section-homepage-hero.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #hero-{{ section.id }}{
+    color: {{ section.settings.color }};
+  }
+  #hero-{{ section.id }}  .hero__heading{
+    color: {{ section.settings.color_text }};
+  }
+  #hero-{{ section.id }}::before{
+    padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+  }
+  {%- if section.settings.image_mob != blank -%}
+    @media screen and (max-width: 767px) {
+      #hero-{{ section.id }}::before{
+        padding-bottom: {{ 1 | divided_by: section.settings.image_mob.aspect_ratio | times: 100 }}%;
+      }
+    }
+  {%- endif -%}
+{%- endstyle -%}
+
+<div id="hero-{{ section.id }}" class="hero">
+  {%- if section.settings.image != blank -%}
+    <div class="hero__media media {% if section.settings.image_mob != blank %}hero__media--desktop{% endif %}">
+      <img
+        srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+          {%- if section.settings.image.width >= 550 -%}{{ section.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+          {%- if section.settings.image.width >= 767 -%}{{ section.settings.image | image_url: width: 767 }} 767w,{%- endif -%}
+          {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if section.settings.image.width >= 1440 -%}{{ section.settings.image | image_url: width: 1440 }} 1440w,{%- endif -%}
+          {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | image_url: width: 1780 }} 1780w,{%- endif -%}
+          {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | image_url: width: 2000 }} 2000w,{%- endif -%}
+          {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+          {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | image_url: width: 3840 }} 3840w,{%- endif -%}
+          {{ section.settings.image | image_url }} {{ section.settings.image.width }}w"
+        sizes="100vw"
+        src="{{ section.settings.image | image_url: width: 1440 }}"
+        loading="lazy"
+        alt="{{ section.settings.image.alt | escape }}"
+        width="{{ section.settings.image.width }}"
+        height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+      >
+    </div>
+  {%- endif -%}
+  {%- if section.settings.image_mob != blank -%}
+    <div class="hero__media hero__media--mobile media">
+      <img
+        srcset="{%- if section.settings.image_mob.width >= 414 -%}{{ section.settings.image_mob | image_url: width: 414 }} 414w,{%- endif -%}
+          {%- if section.settings.image_mob.width >= 767 -%}{{ section.settings.image_mob | image_url: width: 767 }} 767w,{%- endif -%}
+          {%- if section.settings.image_mob.width >= 1100 -%}{{ section.settings.image_mob | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if section.settings.image_mob.width >= 1440 -%}{{ section.settings.image_mob | image_url: width: 1440 }} 1440w{%- endif -%}
+          {{ section.settings.image_mob | image_url }} {{ section.settings.image_mob.width }}w"
+        sizes="100vw"
+        src="{{ section.settings.image_mob | image_url: width: 767 }}"
+        loading="lazy"
+        alt="{{ section.settings.image_mob.alt | escape }}"
+        width="{{ section.settings.image_mob.width }}"
+        height="{{ section.settings.image_mob.width | divided_by: section.settings.image_mob.aspect_ratio }}"
+      >
+    </div>
+  {%- endif -%}
+  <div class="hero__content page-width">
+    <div class="hero__box">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            {%- if block.settings.heading != blank -%}
+              <h2 class="hero__heading" {{ block.shopify_attributes }}>
+                {{ block.settings.heading | replace: "<p>", "" | replace: "</p>", "" }}
+              </h2>
+            {%- endif -%}
+          {%- when 'text' -%}
+            {%- if block.settings.text != blank -%}
+                <div class="hero__text rte" {{ block.shopify_attributes }}>
+                  {{ block.settings.text  }}
+                </div>
+            {%- endif -%}
+          {%- when 'bottom_text' -%}
+            {%- if block.settings.bottom_text != blank -%}
+              <div class="hero__bottom-text rte" {{ block.shopify_attributes }}>
+                {{ block.settings.bottom_text }}
+              </div>
+            {%- endif -%}
+          {%- when 'buttons' -%}
+            {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+              <div class="hero__buttons" {{ block.shopify_attributes }}>
+                  <a href="{{ block.settings.button_link }}" class="button button--secondary hero__button {% if block.settings.button_label_mob != blank %}hero__button--desktop{% endif %}">{{ block.settings.button_label | escape }}</a>
+                  {%- if block.settings.button_label_mob != blank -%}
+                    <a href="{{ block.settings.button_link }}" class="button button--secondary hero__button hero__button--mobile">{{ block.settings.button_label_mob | escape }}</a>
+                  {%- endif -%}
+              </div>
+            {%- endif -%}
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.homepage-hero.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.homepage-hero.settings.image.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mob",
+      "label": "t:sections.homepage-hero.settings.image_mob.label"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "t:sections.homepage-hero.settings.color.label",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "t:sections.homepage-hero.settings.color_text.label",
+      "default": "#F9F8F5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.homepage-hero.blocks.heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "heading",
+          "default": "<p>Bliss up for <strong>Blis</strong>stober</p>",
+          "label": "t:sections.homepage-hero.blocks.heading.settings.heading.label"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.homepage-hero.blocks.text.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>For a limited time, bundle your bliss and save.</p>",
+          "label": "t:sections.homepage-hero.blocks.text.settings.text.label"
+        }
+      ]
+    },
+    {
+      "type": "bottom_text",
+      "name": "t:sections.homepage-hero.blocks.bottom_text.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "bottom_text",
+           "default": "<p>(1x High Rhode, 1x Dream Light, and a 20-Pack of Kin Spritz.</p>",
+          "label": "t:sections.homepage-hero.blocks.bottom_text.settings.bottom_text.label"
+        }
+      ]
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.homepage-hero.blocks.buttons.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "$149 (5% off)",
+          "label": "t:sections.homepage-hero.blocks.buttons.settings.button_label.label"
+        },
+        {
+          "type": "text",
+          "id": "button_label_mob",
+          "default": "Shop Dream Light",
+          "label": "t:sections.homepage-hero.blocks.buttons.settings.button_label_mob.label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.homepage-hero.blocks.buttons.settings.button_link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.homepage-hero.presets.name",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "bottom_text"
+        },
+        {
+          "type": "buttons"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

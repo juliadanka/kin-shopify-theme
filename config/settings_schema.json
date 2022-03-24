@@ -1,0 +1,41 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Kin",
+    "theme_version": "1.0.0",
+    "theme_author": "Yuliia Danylevska",
+    "theme_documentation_url": "https://www.figma.com/file/XsQukZXOEMUNNiHEx7Q41K/Space-Race-(Lunar-Solar-Group)-Developer-Test-2021?node-id=63%3A5",
+    "theme_support_url": "https://www.linkedin.com/in/yuliia-danylevska-90946577/"
+  },
+  {
+    "name": "t:settings_schema.favicon.name",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "t:settings_schema.favicon.settings.favicon.label",
+        "info": "t:settings_schema.favicon.settings.favicon.info"
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.cart.name",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "cart_logo",
+        "label": "t:settings_schema.cart.settings.cart_logo.label"
+      },
+      {
+        "type": "range",
+        "id": "cart_logo_width",
+        "min": 30,
+        "max": 100,
+        "step": 1,
+        "default": 56,
+        "unit": "t:settings_schema.cart.settings.cart_logo_width.unit",
+        "label": "t:settings_schema.cart.settings.cart_logo_width.label"
+      }
+    ]
+  }
+]

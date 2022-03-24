@@ -1,0 +1,136 @@
+{
+  "sections": {
+    "header": {
+      "name": "Header",
+      "settings": {
+        "logo": {
+          "label": "Logo image"
+        },
+        "logo_width": {
+          "unit": "px",
+          "label": "Logo width"
+        },
+        "menu": {
+          "label": "Menu"
+        },
+        "menu_2": {
+          "label": "Bottom menu"
+        },
+        "menu_logo": {
+          "label": "Logo image"
+        },
+        "menu_logo_width": {
+          "unit": "px",
+          "label": "Mobile logo width"
+        }
+      },
+      "blocks": {
+        "image": {
+          "name": "Menu item",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "memu_item": {
+              "label": "Menu item title"
+            }
+          }
+        }
+      }
+    },
+    "homepage-hero": {
+      "name": "Homepage hero",
+      "settings": {
+        "image": {
+          "label": "Desktop image"
+        },
+        "image_mob": {
+          "label": "Mobile image"
+        },
+        "color": {
+          "label": "Header color"
+        },
+        "color_text": {
+          "label": "Text color"
+        }
+      },
+      "blocks": {
+        "heading": {
+          "name": "Heading",
+          "settings": {
+            "heading": {
+              "label": "Heading"
+            }
+          }
+        },
+        "text": {
+          "name": "Text",
+          "settings": {
+            "text": {
+              "label": "Description"
+            }
+          }
+        },
+        "bottom_text": {
+          "name": "Bottom text",
+          "settings": {
+            "bottom_text": {
+              "label": "Description"
+            }
+          }
+        },
+        "buttons": {
+          "name": "Buttons",
+          "settings": {
+            "button_label": {
+              "label": "Button label"
+            },
+            "button_link": {
+              "label": "Button link"
+            },
+            "button_label_mob": {
+              "label": "Mobile button label"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Homepage hero"
+      }
+    },
+    "product": {
+      "name": "Test add to cart product",
+      "settings": {
+        "product": {
+          "label": "Product"
+        }
+      },
+      "presets": {
+        "name": "Test add to cart product"
+      }
+    }
+  },
+  "settings_schema": {
+    "favicon": {
+      "name": "Favicon",
+      "settings": {
+        "favicon": {
+          "label": "Favicon image",
+          "info": "Will be scaled down to 32 x 32px"
+        }
+      }
+    },
+    "cart": {
+      "name": "Cart",
+      "settings": {
+        "cart_logo": {
+          "label": "Logo image"
+        },
+        "cart_logo_width": {
+          "unit": "px",
+          "label": "Logo width"
+        }
+      }
+    }
+  }
+}
